@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemyTemplate;
+    [SerializeField] private Enemy _enemyTemplate;
+
     private Transform _spawner;
     private Transform[] _enemySpawnPoints;
     private Vector3 _spawnPosition;
+    private float _pauseDuration = 2f;
 
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator InitializeSpawn()
     {
-        var twoSeconds = new WaitForSeconds(2);
+        var twoSeconds = new WaitForSeconds(_pauseDuration);
 
         for (int i = 0; i < _enemySpawnPoints.Length; i++)
         {
